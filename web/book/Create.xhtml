@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="BookCreateDlg" widgetVar="BookCreateDialog" modal="true" resizable="false" appendToBody="true" header="#{bundle.CreateBookTitle}">
+
+            <h:form id="BookCreateForm">
+
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{bookController.selected != null}">
+
+                        <p:outputLabel value="#{bundle.CreateBookLabel_title}" for="title" />
+                        <p:inputText id="title" value="#{bookController.selected.title}" title="#{bundle.CreateBookTitle_title}" />
+
+                        <p:outputLabel value="#{bundle.CreateBookLabel_price}" for="price" />
+                        <p:inputText id="price" value="#{bookController.selected.price}" title="#{bundle.CreateBookTitle_price}" />
+
+                        <p:outputLabel value="#{bundle.CreateBookLabel_description}" for="description" />
+                        <p:inputText id="description" value="#{bookController.selected.description}" title="#{bundle.CreateBookTitle_description}" />
+
+                        <p:outputLabel value="#{bundle.CreateBookLabel_isbn}" for="isbn" />
+                        <p:inputText id="isbn" value="#{bookController.selected.isbn}" title="#{bundle.CreateBookTitle_isbn}" />
+
+                        <p:outputLabel value="#{bundle.CreateBookLabel_numOfPages}" for="numOfPages" />
+                        <p:inputText id="numOfPages" value="#{bookController.selected.numOfPages}" title="#{bundle.CreateBookTitle_numOfPages}" />
+
+                        <p:outputLabel value="#{bundle.CreateBookLabel_illustration}" for="illustration" />
+                        <p:inputText id="illustration" value="#{bookController.selected.illustration}" title="#{bundle.CreateBookTitle_illustration}" />
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{bookController.saveNew}" value="#{bundle.Save}" update="display,:BookListForm:datalist,:growl" oncomplete="handleSubmit(xhr,status,args,BookCreateDialog);"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="BookCreateDialog.hide()"/>
+                </h:panelGroup>
+
+            </h:form>
+
+        </p:dialog>
+
+    </ui:composition>
+
+</html>

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="BookEditDlg" widgetVar="BookEditDialog" modal="true" resizable="false" appendToBody="true" header="#{bundle.EditBookTitle}">
+
+            <h:form id="BookEditForm">
+
+                <h:panelGroup id="display">
+                    <p:panelGrid  columns="2" rendered="#{bookController.selected != null}">
+
+                        <h:outputLabel value="#{bundle.EditBookLabel_id}" for="id" />
+                        <h:outputText id="id" value="#{bookController.selected.id}" />
+
+                        <p:outputLabel value="#{bundle.EditBookLabel_title}" for="title" />
+                        <p:inputText id="title" value="#{bookController.selected.title}" title="#{bundle.EditBookTitle_title}" />
+
+                        <p:outputLabel value="#{bundle.EditBookLabel_price}" for="price" />
+                        <p:inputText id="price" value="#{bookController.selected.price}" title="#{bundle.EditBookTitle_price}" />
+
+                        <p:outputLabel value="#{bundle.EditBookLabel_description}" for="description" />
+                        <p:inputText id="description" value="#{bookController.selected.description}" title="#{bundle.EditBookTitle_description}" />
+
+                        <p:outputLabel value="#{bundle.EditBookLabel_isbn}" for="isbn" />
+                        <p:inputText id="isbn" value="#{bookController.selected.isbn}" title="#{bundle.EditBookTitle_isbn}" />
+
+                        <p:outputLabel value="#{bundle.EditBookLabel_numOfPages}" for="numOfPages" />
+                        <p:inputText id="numOfPages" value="#{bookController.selected.numOfPages}" title="#{bundle.EditBookTitle_numOfPages}" />
+
+                        <p:outputLabel value="#{bundle.EditBookLabel_illustration}" for="illustration" />
+                        <p:inputText id="illustration" value="#{bookController.selected.illustration}" title="#{bundle.EditBookTitle_illustration}" />
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{bookController.save}" value="#{bundle.Save}" update="display,:BookListForm:datalist,:growl" oncomplete="handleSubmit(xhr,status,args,BookEditDialog);"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="BookEditDialog.hide()"/>
+                </h:panelGroup>
+
+            </h:form>
+
+        </p:dialog>
+
+    </ui:composition>
+
+</html>

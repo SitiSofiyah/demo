@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this template, choose Tools | Templates
+and open the template in the editor.
+-->
+
+
+<std:student
+    xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'
+    xmlns:std='http://aabu.edu.jo/reg/student'
+    xsi:schemaLocation='http://aabu.edu.jo/reg/student ../../../build/web/WEB-INF/classes/xmldemo/students.xsd'>
+    <std:birthDate>2009-11-01</std:birthDate>
+    <std:name>akaleek</std:name>
+    <std:age>12</std:age>
+
+</std:student>
